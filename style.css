@@ -1,0 +1,136 @@
+:root {
+  --bg: #f5f5f5;
+  --text: #000;
+  --tile: #fff;
+  --border: #000;
+}
+
+.dark {
+  --bg: #1e1e1e;
+  --text: #fff;
+  --tile: #2b2b2b;
+  --border: #888;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.controls button, select {
+  margin: 4px;
+  padding: 6px 10px;
+}
+
+#board {
+  width: 360px;
+  height: 360px;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  margin: 20px auto;
+  border: 3px solid var(--border);
+}
+
+.tile {
+  border: 1px solid var(--border);
+  background: var(--tile);
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.tile.locked {
+  background: #ccc;
+  cursor: default;
+}
+
+.tile.selected {
+  background: #90caf9;
+}
+
+.tile.same-number {
+  background-color: #ffe082 !important;
+}
+
+.tile.highlight {
+  background: #e3f2fd;
+}
+
+.tile:nth-child(3n) {
+  border-right: 3px solid var(--border);
+}
+
+.tile:nth-child(27n + 1),
+.tile:nth-child(27n + 2),
+.tile:nth-child(27n + 3),
+.tile:nth-child(27n + 4),
+.tile:nth-child(27n + 5),
+.tile:nth-child(27n + 6),
+.tile:nth-child(27n + 7),
+.tile:nth-child(27n + 8),
+.tile:nth-child(27n + 9) {
+  border-top: 3px solid var(--border);
+}
+
+#digits {
+  width: 360px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.number {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.number.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+#game-wrapper {
+  position: relative;
+}
+
+#pause-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  font-size: 32px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.win {
+  animation: pop 0.8s ease forwards;
+  text-align: center;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
